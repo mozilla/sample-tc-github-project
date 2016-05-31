@@ -1,0 +1,31 @@
+version: 0
+metadata: 
+    name: "Test project for demo'ing tc-github"
+    description: "Tests for a little rust demo project"
+    owner: "{{ event.head.user.email }}" 
+    source: "{{ event.head.repo.url }}"
+tasks: 
+    - provisionerId: "{{ taskcluster.docker.provisionerId }}"
+      workerType: "{{taskcluster.docker.workerType }}"
+      extra:
+          github:
+              env: true
+              events:
+                  - pull_request.opened
+                  - pull_request.synchronize
+                  - pull_request.reopened
+      payload:
+          maxRunTime: 3600
+          image: "jimmycuadra/rust:latest"
+          command:
+              - "/bin/bash"
+              - "--login"
+              - "-c"
+              - "checkout-pull-request && rutc --test unit_test.rs && ./unit_test"
+      metadata:
+          name: "Tests for test project for demo'ing tc-github"
+          description: "Tests for a little rust demo project"
+          owner: "{{ event.head.user.email }}"
+          source: "{{ event.head.repo.url }}"
+
+
