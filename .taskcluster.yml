@@ -21,7 +21,7 @@ tasks:
               - "/bin/bash"
               - "--login"
               - "-c"
-              - "checkout-pull-request && rutc --test unit_test.rs && ./unit_test"
+              - "./checkout-pull-request && rustc --test unit_test.rs && ./unit_test"
       metadata:
           name: "Tests for test project for demo'ing tc-github"
           description: "Tests for a little rust demo project"
