@@ -4,11 +4,11 @@ Unit test code came from http://rustbyexample.com/meta/test.html
 
 Notes on deploying:
 
-* May need to add TaskClusterBots as a team collaborator to get things going
+* May need to install TaskCluster integration https://github.com/integration/taskcluster
 * How do we see pushes for "main line" commits
 
 == Steps to set up a new repo
 
-* Create a .taskcluser.yml
+* Create a .taskcluser.yml (https://tools.taskcluster.net/quickstart/)
 * Select an appropriate docker image & update
 
